@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERNI | OPT-OUT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;700&display=swap');
+
+        :root {
+            --bg: #ffffff;
+            --fg: #000000;
+            --code-bg: #f4f4f4;
+            --border-color: #000000;
+        }
+
+        body.dark-mode {
+            --bg: #000000;
+            --fg: #ffffff;
+            --code-bg: #1a1a1a;
+            --border-color: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        pre,
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: 0 !important;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: var(--fg);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .border-sharp {
+            border: 1px solid var(--border-color);
+            transition: border-color 0.3s;
+        }
+
+        /* Sidebar Links */
+        .sidebar-link {
+            display: block;
+            padding: 0.5rem 0;
+            text-decoration: none;
+            color: var(--fg);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .sidebar-link:hover {
+            border-bottom: 1px solid var(--fg);
+        }
+
+        /* Headers & Footer Border */
+        h1,
+        h2,
+        h3,
+        h4,
+        footer {
+            border-color: var(--border-color);
+            transition: border-color 0.3s;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Theme Toggling Logic */
+        #logo-dark,
+        #sun-icon {
+            display: none;
+        }
+
+        #logo-light,
+        #moon-icon {
+            display: block;
+        }
+
+        body.dark-mode #logo-dark {
+            display: block;
+        }
+
+        body.dark-mode #logo-light {
+            display: none;
+        }
+
+        body.dark-mode #sun-icon {
+            display: block;
+        }
+
+        body.dark-mode #moon-icon {
+            display: none;
+        }
+
+        body.dark-mode .bg-black {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    </style>
+</head>
+
+<body class="p-6 md:p-12">
+
+    <header class="mb-16 border-b-4 pb-8 border-[var(--border-color)]">
+        <div class="flex justify-between items-center mb-8 flex-wrap gap-8">
+
+            <div class="flex items-center gap-8">
+                <div class="w-24 h-24 relative flex-shrink-0">
+                    <img src="images/LOGO_LIGHT.png" id="logo-light"
+                        class="absolute inset-0 w-full h-full object-contain" alt="Light Logo"
+                        onerror="this.src='images/LOGO_LIGHT.png'">
+                    <img src="images/LOGO_DARK.png" id="logo-dark" class="absolute inset-0 w-full h-full object-contain"
+                        alt="Dark Logo" onerror="this.src='images/LOGO_DARK.png'">
+                </div>
+                <h1 class="text-6xl md:text-8xl leading-none tracking-tighter">ERNI</h1>
+            </div>
+
+            <div class="text-right flex flex-col items-end gap-6">
+                <button id="theme-toggle"
+                    class="focus:outline-none p-2 border-sharp hover:bg-[var(--fg)] hover:text-[var(--bg)] transition-colors cursor-pointer">
+                    <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                    <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                <div>
+                    <p class="font-bold text-xl uppercase tracking-tighter">OPT-OUT</p>
+                    <p class="text-xs uppercase tracking-widest opacity-60">Brussels 2026</p>
+                </div>
+            </div>
+        </div>
+
+        <p class="text-xl uppercase tracking-widest">ESP-NOW Reticulum Network Interface</p>
+        <div class="mt-8 flex flex-wrap gap-4 text-sm font-bold uppercase">
+            <span class="border-sharp px-4 py-1 bg-black text-white transition-colors">Managed Flooding</span>
+            <span class="border-sharp px-4 py-1">500-MTU Reassembly</span>
+            <span class="border-sharp px-4 py-1">FNV-1a Dedup</span>
+            <span class="border-sharp px-4 py-1">KISS Compliant</span>
+            <span class="border-sharp px-4 py-1">921600 Baud</span>
+        </div>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+
+        <aside class="md:col-span-1">
+            <nav class="sticky top-12 space-y-4 uppercase text-xs font-bold tracking-tighter">
+                <a href="#download" class="sidebar-link">00. Download - Install</a>
+                <a href="#bridging" class="sidebar-link">01. Fragment Bridging</a>
+                <a href="#repeating" class="sidebar-link">02. Flooding & Repeating</a>
+                <a href="#improvements" class="sidebar-link">03. v1.1 Improvements</a>
+                <a href="#configuration" class="sidebar-link">04. RNS Configuration</a>
+            </nav>
+        </aside>
+
+        <main class="md:col-span-3 space-y-24">
+
+            <section id="download">
+                <h2 class="text-3xl mb-6">00. Download - Install</h2>
+                <div class="border-sharp p-8 bg-[var(--code-bg)]">
+                    <p class="mb-4 text-sm font-bold uppercase tracking-widest">ESP32 Hardware Compatibility:</p>
+                    <ul class="list-disc list-inside mb-8 text-sm opacity-90 space-y-2">
+                        <li><strong>100% Variant Agnostic:</strong> Native ESP-NOW architecture enables ERNI to run
+                            cleanly on all chips (ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C6).</li>
+                    </ul>
+                    <p class="mb-4 text-sm font-bold uppercase tracking-widest">Get the latest release directly from
+                        GitHub:</p>
+                    <a href="https://github.com/0P7-0U7/ERNI/releases/latest" target="_blank"
+                        class="inline-block border-sharp px-6 py-3 bg-[var(--fg)] text-[var(--bg)] font-bold uppercase hover:bg-transparent hover:text-[var(--fg)] transition-colors">
+                        Download Last Release
+                    </a>
+                    <p class="mt-6 text-sm opacity-70">Flash the <code>ERNI_Alpha.ino</code> direct to any generic ESP32
+                        mapping the serial port cleanly.</p>
+                </div>
+            </section>
+
+            <section id="bridging">
+                <h2 class="text-3xl mb-6">01. Fragment Bridging</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 border-sharp">
+                    <div class="p-8 border-b sm:border-b-0 sm:border-r border-[var(--border-color)]">
+                        <h3 class="text-lg mb-2">THE ESP-NOW BOTTLENECK</h3>
+                        <p class="text-sm">Reticulum networks are heavily optimized for long-range, encrypted meshing
+                            with a standard <code>500-byte MTU</code> frame. However, raw ESP-NOW (`802.11` WiFi Action
+                            Frames) maxes out around 250 bytes.</p>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-lg mb-2">THE ERNI ENGINE</h3>
+                        <p class="text-sm">When the PC attempts to inject a 500-byte MTU, ERNI intelligently chops the
+                            buffer into twin fragments, attaching a microscopic <code>[PacketID][Sequence]</code>
+                            ESP-NOW header to track and reassemble them seamlessly on the distant node. A brief
+                            inter-fragment pacing delay ensures receivers process each chunk cleanly, even on
+                            noisy channels. The reassembly engine tracks sender identity to prevent fragment
+                            interleaving from multiple simultaneous transmitters.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="repeating">
+                <h2 class="text-3xl mb-6">02. Auto-Deduplication & Flooding</h2>
+                <div class="border-sharp p-8 bg-[var(--code-bg)]">
+                    <h3 class="text-lg mb-2">EVERY NODE IS A REPEATER</h3>
+                    <p class="text-sm opacity-90 mb-4">
+                        If you leave a battery-powered ERNI node in the woods, it natively bridges network gaps
+                        extending your hardware horizon.
+                        <br><br>
+                        However, mesh echoing quickly triggers looping broadcast storms. To prevent this, ERNI runs the
+                        <b>FNV-1a 32-bit hash</b> algorithm on every packet and checks it against a <b>fixed-size
+                        circular cache</b> with O(1) insertion and zero heap allocations.
+                        <br><br>
+                        When it overhears an incoming radio frame, it consults the hash cache. <i>New pack?</i>
+                        Queue it for re-broadcast from the main loop. <i>Duplicate pack?</i> Drop it instantly.
+                        Rebroadcasts are queued and dispatched safely from the main task context, avoiding
+                        reentrancy issues inside the ESP-NOW callback.
+                    </p>
+                </div>
+            </section>
+
+            <section id="improvements">
+                <h2 class="text-3xl mb-6">03. v1.1 Improvements</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 border-sharp">
+                    <div class="p-8 border-b sm:border-b-0 sm:border-r border-[var(--border-color)]">
+                        <h3 class="text-lg mb-2">FNV-1a HASHING</h3>
+                        <p class="text-sm">Industry-standard 32-bit hash with superior avalanche properties.
+                            Dramatically fewer collisions than the previous polynomial hash, reducing silent
+                            packet drops in busy mesh environments.</p>
+                    </div>
+                    <div class="p-8 border-b sm:border-b-0 sm:border-r border-[var(--border-color)]">
+                        <h3 class="text-lg mb-2">SAFE REBROADCAST</h3>
+                        <p class="text-sm">Packets are queued in a lock-free ring buffer and transmitted from
+                            the main <code>loop()</code> context. Eliminates timing and reentrancy risks from
+                            sending inside ESP-NOW callbacks.</p>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-lg mb-2">KISS COMPLIANCE</h3>
+                        <p class="text-sm">Full KISS TNC specification compliance with the standard
+                            <code>0x00</code> command byte. The RX path correctly strips this byte when reading
+                            from Reticulum's SerialInterface.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="configuration">
+                <h2 class="text-3xl mb-6">04. RNS Configuration</h2>
+                <div class="mt-8 mb-4 border-sharp p-6 bg-[var(--code-bg)]">
+                    <p class="mb-4 text-sm font-bold uppercase tracking-widest">Connect your PC to the ERNI bridge via
+                        USB and configure `/etc/reticulum/config`:</p>
+                    <pre><code>[[ERNI_Mesh]]
+  type = SerialInterface
+  interface_enabled = True
+  outgoing = True
+  port = /dev/ttyUSB0
+  speed = 921600
+  databits = 8
+  parity = none
+  stopbits = 1</code></pre>
+                </div>
+                <p class="text-sm opacity-70">Make absolutely sure you define the speed as `921600` otherwise the
+                    Reticulum stack will fail to decrypt the KISS boundaries effectively.</p>
+            </section>
+
+        </main>
+    </div>
+
+    <footer
+        class="mt-32 pt-12 border-t border-[var(--border-color)] text-xs uppercase font-bold tracking-widest flex justify-between">
+        <span>ERNI : ESP-NOW RETICULUM NETWORK INTERFACE</span>
+        <span>OPT-OUT / BRUSSELS 2026</span>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const bodyElement = document.body;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            bodyElement.classList.add('dark-mode');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            bodyElement.classList.toggle('dark-mode');
+            if (bodyElement.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+
+</html>

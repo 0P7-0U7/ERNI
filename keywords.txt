@@ -1,0 +1,23 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+ERNI_Mesh	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+send_to_serial_kiss	KEYWORD2
+hash_packet	KEYWORD2
+onDataRecv	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+BAUD_RATE	LITERAL1
+MAX_RNS_MTU	LITERAL1
+ESP_NOW_PAYLOAD	LITERAL1
+CACHE_SIZE	LITERAL1
+FEND	LITERAL1
+FESC	LITERAL1
+TFEND	LITERAL1
+TFESC	LITERAL1
